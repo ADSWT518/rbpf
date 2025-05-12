@@ -3,7 +3,7 @@ use serde::{Deserialize, Serialize};
 use std::fs::File;
 use std::io::Write;
 use std::time::Instant;
-use solana_sbpf::tnum::{tnum_mul, tnum_mul_opt, xtnum_mul_top, xtnum_mul_high_top, Tnum};
+use solana_sbpf::tnum::{*};
 
 /// Tnum结构
 #[derive(Debug, Clone, Copy, Serialize, Deserialize)]
@@ -90,7 +90,7 @@ fn main() {
     let mut test_cases = Vec::with_capacity(n);
     
     // 用于统计的变量
-    let methods = ["tnum_mul", "tnum_mul_opt", "xtnum_mul_top", "xtnum_mul_high_top"];
+    let methods = ["tnum_mul", "tnum_mul_opt", "xtnum_mul_top", "xtnum_mul_high_top", "tnum_mul_simpl"];
     let mut total_times = vec![0.0; methods.len()];
     let mut correct_counts = vec![0; methods.len()];
 
@@ -112,6 +112,7 @@ fn main() {
             ("tnum_mul_opt", tnum_mul_opt as fn(Tnum, Tnum) -> Tnum),
             ("xtnum_mul_top", xtnum_mul_top),
             ("xtnum_mul_high_top", xtnum_mul_high_top),
+            ("tnum_mul_simpl", tnum_mul_simpl),
         ];
 
         for (name, func) in implementations {

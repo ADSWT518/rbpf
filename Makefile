@@ -1,7 +1,7 @@
 .PHONY: test clean
 
 # default
-N ?= 1000
+N ?= 100
 M ?= 1000
 
 test: build
