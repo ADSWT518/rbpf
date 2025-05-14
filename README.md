@@ -5,19 +5,20 @@ SBPF virtual machine + A better verifier
 ## Our Verifier
 
 - tnum abstract domain (see `src/tnum.rs`)
-- `tnum_mul` performance testing (see `tests/tnum.rs`)
+- `tnum_mul` performance testing (see `tests/tnum_mul.rs` and `tests/tnum_mul.c`)
 
 To check the performance of mulpti-tnum-mul, just do
 ```shell
-$ make test
+$ make test (N=100 ITERATION=1000)
 ...
 Total:
-function                                        average time(ns)        accuracy
-----------------------------------------
-tnum_mul                                        150.44                          100.0%
-tnum_mul_opt                                    110.68                          100.0%
-xtnum_mul_top                                   37848.09                                24.0%
-xtnum_mul_high_top                                      1010.27                         94.0%
+method                average time(ns)   equal           less than       more than       not_equal         
+-------------------------------------------------------------------------------------------------
+C_tnum_mul            128.0              100.0           0.0             0.0             0.0               
+tnum_mul              57.9               100.0           0.0             0.0             0.0               
+tnum_mul_opt          63.0               100.0           0.0             0.0             0.0               
+xtnum_mul_top         709.5              0.0             98.0            1.0             1.0               
+xtnum_mul_high_top    159.0              14.0            11.0            70.0            5.0 
 ```
 * where `accuracy` represents: if the result of other mul functions is same to `tnum_mul`, then we think it is correct, otherwise incorrect. `accuracy` could be improved using the following four cases:
 
