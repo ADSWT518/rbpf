@@ -324,8 +324,11 @@ pub fn tnum_mul_simpl (x: Tnum, y: Tnum) -> Tnum {
 
 #[test]
 fn test_xtnum_mul () -> (){
-    let a = Tnum::new(15, 0); // 2^4 - 1
-    let b = Tnum::new(0, 31); // 2^5 - 1
+    // let a = Tnum::new(15, 0); // 2^4 - 1
+    // let b = Tnum::new(0, 31); // 2^5 - 1
+    
+    let a = Tnum::new(1, 4); 
+    let b = Tnum::new(2, 4);
     println!("{:?}", tnum_mul(a, b)); // Output: Tnum { value: 0, mask: 511 } 2^(4+5) -1
     println!("{:?}", xtnum_mul_top(a, b)); // Output: Tnum { value: 0, mask: 4095 }
     println!("{:?}", xtnum_mul_high_top(a, b)); // Tnum { value: 0, mask: 511 }
