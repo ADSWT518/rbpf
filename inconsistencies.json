@@ -1,0 +1,3902 @@
+[
+  {
+    "case_number": 1,
+    "input_a": {
+      "value": 54,
+      "mask": 128
+    },
+    "input_b": {
+      "value": 41,
+      "mask": 20
+    },
+    "c_output": {
+      "value": 6,
+      "mask": 32760
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 8388607
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 1,
+    "input_a": {
+      "value": 54,
+      "mask": 128
+    },
+    "input_b": {
+      "value": 41,
+      "mask": 20
+    },
+    "c_output": {
+      "value": 6,
+      "mask": 32760
+    },
+    "rust_output": {
+      "value": 6,
+      "mask": 16376
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 2,
+    "input_a": {
+      "value": 227,
+      "mask": 0
+    },
+    "input_b": {
+      "value": 184,
+      "mask": 1
+    },
+    "c_output": {
+      "value": 40968,
+      "mask": 2019
+    },
+    "rust_output": {
+      "value": 40968,
+      "mask": 1827
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 2,
+    "input_a": {
+      "value": 227,
+      "mask": 0
+    },
+    "input_b": {
+      "value": 184,
+      "mask": 1
+    },
+    "c_output": {
+      "value": 40968,
+      "mask": 2019
+    },
+    "rust_output": {
+      "value": 40968,
+      "mask": 4067
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 3,
+    "input_a": {
+      "value": 117,
+      "mask": 0
+    },
+    "input_b": {
+      "value": 195,
+      "mask": 36
+    },
+    "c_output": {
+      "value": 16387,
+      "mask": 16380
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 524287
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 3,
+    "input_a": {
+      "value": 117,
+      "mask": 0
+    },
+    "input_b": {
+      "value": 195,
+      "mask": 36
+    },
+    "c_output": {
+      "value": 16387,
+      "mask": 16380
+    },
+    "rust_output": {
+      "value": 19,
+      "mask": 32748
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 4,
+    "input_a": {
+      "value": 95,
+      "mask": 160
+    },
+    "input_b": {
+      "value": 197,
+      "mask": 26
+    },
+    "c_output": {
+      "value": 1,
+      "mask": 131070
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 67108863
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 4,
+    "input_a": {
+      "value": 95,
+      "mask": 160
+    },
+    "input_b": {
+      "value": 197,
+      "mask": 26
+    },
+    "c_output": {
+      "value": 1,
+      "mask": 131070
+    },
+    "rust_output": {
+      "value": 1,
+      "mask": 65530
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 5,
+    "input_a": {
+      "value": 23,
+      "mask": 96
+    },
+    "input_b": {
+      "value": 100,
+      "mask": 16
+    },
+    "c_output": {
+      "value": 12,
+      "mask": 32752
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 8388604
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 5,
+    "input_a": {
+      "value": 23,
+      "mask": 96
+    },
+    "input_b": {
+      "value": 100,
+      "mask": 16
+    },
+    "c_output": {
+      "value": 12,
+      "mask": 32752
+    },
+    "rust_output": {
+      "value": 108,
+      "mask": 16272
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 6,
+    "input_a": {
+      "value": 198,
+      "mask": 32
+    },
+    "input_b": {
+      "value": 116,
+      "mask": 128
+    },
+    "c_output": {
+      "value": 56,
+      "mask": 130944
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 67108862
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 6,
+    "input_a": {
+      "value": 198,
+      "mask": 32
+    },
+    "input_b": {
+      "value": 116,
+      "mask": 128
+    },
+    "c_output": {
+      "value": 56,
+      "mask": 130944
+    },
+    "rust_output": {
+      "value": 56,
+      "mask": 65408
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 7,
+    "input_a": {
+      "value": 63,
+      "mask": 128
+    },
+    "input_b": {
+      "value": 242,
+      "mask": 1
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 65535
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 4194303
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 8,
+    "input_a": {
+      "value": 34,
+      "mask": 205
+    },
+    "input_b": {
+      "value": 206,
+      "mask": 32
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 131070
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 67108862
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 8,
+    "input_a": {
+      "value": 34,
+      "mask": 205
+    },
+    "input_b": {
+      "value": 206,
+      "mask": 32
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 131070
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 65534
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 9,
+    "input_a": {
+      "value": 222,
+      "mask": 0
+    },
+    "input_b": {
+      "value": 92,
+      "mask": 1
+    },
+    "c_output": {
+      "value": 16384,
+      "mask": 8190
+    },
+    "rust_output": {
+      "value": 16512,
+      "mask": 8046
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 10,
+    "input_a": {
+      "value": 89,
+      "mask": 32
+    },
+    "input_b": {
+      "value": 112,
+      "mask": 11
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 32763
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 8388607
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 10,
+    "input_a": {
+      "value": 89,
+      "mask": 32
+    },
+    "input_b": {
+      "value": 112,
+      "mask": 11
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 32763
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 16379
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 11,
+    "input_a": {
+      "value": 44,
+      "mask": 131
+    },
+    "input_b": {
+      "value": 113,
+      "mask": 8
+    },
+    "c_output": {
+      "value": 4,
+      "mask": 65531
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 4194303
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 11,
+    "input_a": {
+      "value": 44,
+      "mask": 131
+    },
+    "input_b": {
+      "value": 113,
+      "mask": 8
+    },
+    "c_output": {
+      "value": 4,
+      "mask": 65531
+    },
+    "rust_output": {
+      "value": 4,
+      "mask": 32763
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 12,
+    "input_a": {
+      "value": 70,
+      "mask": 145
+    },
+    "input_b": {
+      "value": 204,
+      "mask": 32
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 131068
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 67108860
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 12,
+    "input_a": {
+      "value": 70,
+      "mask": 145
+    },
+    "input_b": {
+      "value": 204,
+      "mask": 32
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 131068
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 65532
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 13,
+    "input_a": {
+      "value": 147,
+      "mask": 0
+    },
+    "input_b": {
+      "value": 233,
+      "mask": 6
+    },
+    "c_output": {
+      "value": 32769,
+      "mask": 4094
+    },
+    "rust_output": {
+      "value": 32768,
+      "mask": 8191
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 13,
+    "input_a": {
+      "value": 147,
+      "mask": 0
+    },
+    "input_b": {
+      "value": 233,
+      "mask": 6
+    },
+    "c_output": {
+      "value": 32769,
+      "mask": 4094
+    },
+    "rust_output": {
+      "value": 1,
+      "mask": 65534
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 14,
+    "input_a": {
+      "value": 94,
+      "mask": 32
+    },
+    "input_b": {
+      "value": 136,
+      "mask": 4
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 30712
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 2097148
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 14,
+    "input_a": {
+      "value": 94,
+      "mask": 32
+    },
+    "input_b": {
+      "value": 136,
+      "mask": 4
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 30712
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 32760
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 15,
+    "input_a": {
+      "value": 16,
+      "mask": 204
+    },
+    "input_b": {
+      "value": 221,
+      "mask": 0
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 131068
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 4194303
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 15,
+    "input_a": {
+      "value": 16,
+      "mask": 204
+    },
+    "input_b": {
+      "value": 221,
+      "mask": 0
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 131068
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 65532
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 16,
+    "input_a": {
+      "value": 127,
+      "mask": 0
+    },
+    "input_b": {
+      "value": 87,
+      "mask": 168
+    },
+    "c_output": {
+      "value": 1,
+      "mask": 65528
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 2097151
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 16,
+    "input_a": {
+      "value": 127,
+      "mask": 0
+    },
+    "input_b": {
+      "value": 87,
+      "mask": 168
+    },
+    "c_output": {
+      "value": 1,
+      "mask": 65528
+    },
+    "rust_output": {
+      "value": 1,
+      "mask": 32760
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 17,
+    "input_a": {
+      "value": 241,
+      "mask": 14
+    },
+    "input_b": {
+      "value": 51,
+      "mask": 196
+    },
+    "c_output": {
+      "value": 1,
+      "mask": 131070
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 16777215
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 17,
+    "input_a": {
+      "value": 241,
+      "mask": 14
+    },
+    "input_b": {
+      "value": 51,
+      "mask": 196
+    },
+    "c_output": {
+      "value": 1,
+      "mask": 131070
+    },
+    "rust_output": {
+      "value": 1,
+      "mask": 65534
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 18,
+    "input_a": {
+      "value": 255,
+      "mask": 0
+    },
+    "input_b": {
+      "value": 185,
+      "mask": 66
+    },
+    "c_output": {
+      "value": 1,
+      "mask": 131070
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 4194303
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 18,
+    "input_a": {
+      "value": 255,
+      "mask": 0
+    },
+    "input_b": {
+      "value": 185,
+      "mask": 66
+    },
+    "c_output": {
+      "value": 1,
+      "mask": 131070
+    },
+    "rust_output": {
+      "value": 5,
+      "mask": 65530
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 19,
+    "input_a": {
+      "value": 185,
+      "mask": 2
+    },
+    "input_b": {
+      "value": 81,
+      "mask": 0
+    },
+    "c_output": {
+      "value": 14857,
+      "mask": 418
+    },
+    "rust_output": {
+      "value": 14856,
+      "mask": 499
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 19,
+    "input_a": {
+      "value": 185,
+      "mask": 2
+    },
+    "input_b": {
+      "value": 81,
+      "mask": 0
+    },
+    "c_output": {
+      "value": 14857,
+      "mask": 418
+    },
+    "rust_output": {
+      "value": 9,
+      "mask": 32738
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 20,
+    "input_a": {
+      "value": 250,
+      "mask": 0
+    },
+    "input_b": {
+      "value": 241,
+      "mask": 2
+    },
+    "c_output": {
+      "value": 59402,
+      "mask": 2036
+    },
+    "rust_output": {
+      "value": 59392,
+      "mask": 1918
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 20,
+    "input_a": {
+      "value": 250,
+      "mask": 0
+    },
+    "input_b": {
+      "value": 241,
+      "mask": 2
+    },
+    "c_output": {
+      "value": 59402,
+      "mask": 2036
+    },
+    "rust_output": {
+      "value": 32778,
+      "mask": 32756
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 21,
+    "input_a": {
+      "value": 250,
+      "mask": 5
+    },
+    "input_b": {
+      "value": 214,
+      "mask": 41
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 131071
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 8388607
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 21,
+    "input_a": {
+      "value": 250,
+      "mask": 5
+    },
+    "input_b": {
+      "value": 214,
+      "mask": 41
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 131071
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 65535
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 22,
+    "input_a": {
+      "value": 87,
+      "mask": 0
+    },
+    "input_b": {
+      "value": 244,
+      "mask": 8
+    },
+    "c_output": {
+      "value": 20484,
+      "mask": 2040
+    },
+    "rust_output": {
+      "value": 16384,
+      "mask": 16383
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 22,
+    "input_a": {
+      "value": 87,
+      "mask": 0
+    },
+    "input_b": {
+      "value": 244,
+      "mask": 8
+    },
+    "c_output": {
+      "value": 20484,
+      "mask": 2040
+    },
+    "rust_output": {
+      "value": 36,
+      "mask": 32712
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 23,
+    "input_a": {
+      "value": 173,
+      "mask": 18
+    },
+    "input_b": {
+      "value": 150,
+      "mask": 8
+    },
+    "c_output": {
+      "value": 2,
+      "mask": 65532
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 8388606
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 23,
+    "input_a": {
+      "value": 173,
+      "mask": 18
+    },
+    "input_b": {
+      "value": 150,
+      "mask": 8
+    },
+    "c_output": {
+      "value": 2,
+      "mask": 65532
+    },
+    "rust_output": {
+      "value": 16386,
+      "mask": 16380
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 24,
+    "input_a": {
+      "value": 242,
+      "mask": 5
+    },
+    "input_b": {
+      "value": 32,
+      "mask": 140
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 131068
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 8388607
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 24,
+    "input_a": {
+      "value": 242,
+      "mask": 5
+    },
+    "input_b": {
+      "value": 32,
+      "mask": 140
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 131068
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 65532
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 25,
+    "input_a": {
+      "value": 204,
+      "mask": 33
+    },
+    "input_b": {
+      "value": 15,
+      "mask": 32
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 16383
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 2097151
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 26,
+    "input_a": {
+      "value": 90,
+      "mask": 164
+    },
+    "input_b": {
+      "value": 132,
+      "mask": 25
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 131070
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 65534
+    },
+    "method": "tnum_mul_opt"
+  },
+  {
+    "case_number": 26,
+    "input_a": {
+      "value": 90,
+      "mask": 164
+    },
+    "input_b": {
+      "value": 132,
+      "mask": 25
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 131070
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 16777215
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 26,
+    "input_a": {
+      "value": 90,
+      "mask": 164
+    },
+    "input_b": {
+      "value": 132,
+      "mask": 25
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 131070
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 65534
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 27,
+    "input_a": {
+      "value": 236,
+      "mask": 1
+    },
+    "input_b": {
+      "value": 198,
+      "mask": 32
+    },
+    "c_output": {
+      "value": 32776,
+      "mask": 32742
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 2097151
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 27,
+    "input_a": {
+      "value": 236,
+      "mask": 1
+    },
+    "input_b": {
+      "value": 198,
+      "mask": 32
+    },
+    "c_output": {
+      "value": 32776,
+      "mask": 32742
+    },
+    "rust_output": {
+      "value": 8,
+      "mask": 65510
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 28,
+    "input_a": {
+      "value": 152,
+      "mask": 1
+    },
+    "input_b": {
+      "value": 205,
+      "mask": 2
+    },
+    "c_output": {
+      "value": 30720,
+      "mask": 1023
+    },
+    "rust_output": {
+      "value": 30720,
+      "mask": 2047
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 28,
+    "input_a": {
+      "value": 152,
+      "mask": 1
+    },
+    "input_b": {
+      "value": 205,
+      "mask": 2
+    },
+    "c_output": {
+      "value": 30720,
+      "mask": 1023
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 65535
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 29,
+    "input_a": {
+      "value": 13,
+      "mask": 64
+    },
+    "input_b": {
+      "value": 126,
+      "mask": 129
+    },
+    "c_output": {
+      "value": 34,
+      "mask": 65501
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 67108863
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 29,
+    "input_a": {
+      "value": 13,
+      "mask": 64
+    },
+    "input_b": {
+      "value": 126,
+      "mask": 129
+    },
+    "c_output": {
+      "value": 34,
+      "mask": 65501
+    },
+    "rust_output": {
+      "value": 2,
+      "mask": 32765
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 30,
+    "input_a": {
+      "value": 58,
+      "mask": 0
+    },
+    "input_b": {
+      "value": 152,
+      "mask": 101
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 32762
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 1048574
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 30,
+    "input_a": {
+      "value": 58,
+      "mask": 0
+    },
+    "input_b": {
+      "value": 152,
+      "mask": 101
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 32762
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 16378
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 31,
+    "input_a": {
+      "value": 209,
+      "mask": 42
+    },
+    "input_b": {
+      "value": 16,
+      "mask": 131
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 131071
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 67108863
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 31,
+    "input_a": {
+      "value": 209,
+      "mask": 42
+    },
+    "input_b": {
+      "value": 16,
+      "mask": 131
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 131071
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 65535
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 32,
+    "input_a": {
+      "value": 6,
+      "mask": 185
+    },
+    "input_b": {
+      "value": 60,
+      "mask": 2
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 32766
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 1048574
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 32,
+    "input_a": {
+      "value": 6,
+      "mask": 185
+    },
+    "input_b": {
+      "value": 60,
+      "mask": 2
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 32766
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 16382
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 33,
+    "input_a": {
+      "value": 2,
+      "mask": 193
+    },
+    "input_b": {
+      "value": 250,
+      "mask": 1
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 131071
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 4194303
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 33,
+    "input_a": {
+      "value": 2,
+      "mask": 193
+    },
+    "input_b": {
+      "value": 250,
+      "mask": 1
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 131071
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 65535
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 34,
+    "input_a": {
+      "value": 141,
+      "mask": 34
+    },
+    "input_b": {
+      "value": 159,
+      "mask": 0
+    },
+    "c_output": {
+      "value": 16385,
+      "mask": 16382
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 524287
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 34,
+    "input_a": {
+      "value": 141,
+      "mask": 34
+    },
+    "input_b": {
+      "value": 159,
+      "mask": 0
+    },
+    "c_output": {
+      "value": 16385,
+      "mask": 16382
+    },
+    "rust_output": {
+      "value": 16385,
+      "mask": 16378
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 35,
+    "input_a": {
+      "value": 230,
+      "mask": 9
+    },
+    "input_b": {
+      "value": 172,
+      "mask": 0
+    },
+    "c_output": {
+      "value": 32768,
+      "mask": 16380
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 131068
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 35,
+    "input_a": {
+      "value": 230,
+      "mask": 9
+    },
+    "input_b": {
+      "value": 172,
+      "mask": 0
+    },
+    "c_output": {
+      "value": 32768,
+      "mask": 16380
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 65532
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 36,
+    "input_a": {
+      "value": 3,
+      "mask": 184
+    },
+    "input_b": {
+      "value": 67,
+      "mask": 140
+    },
+    "c_output": {
+      "value": 1,
+      "mask": 131068
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 134217727
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 36,
+    "input_a": {
+      "value": 3,
+      "mask": 184
+    },
+    "input_b": {
+      "value": 67,
+      "mask": 140
+    },
+    "c_output": {
+      "value": 1,
+      "mask": 131068
+    },
+    "rust_output": {
+      "value": 1,
+      "mask": 65532
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 37,
+    "input_a": {
+      "value": 51,
+      "mask": 64
+    },
+    "input_b": {
+      "value": 6,
+      "mask": 152
+    },
+    "c_output": {
+      "value": 2,
+      "mask": 65528
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 33554431
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 37,
+    "input_a": {
+      "value": 51,
+      "mask": 64
+    },
+    "input_b": {
+      "value": 6,
+      "mask": 152
+    },
+    "c_output": {
+      "value": 2,
+      "mask": 65528
+    },
+    "rust_output": {
+      "value": 2,
+      "mask": 32760
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 38,
+    "input_a": {
+      "value": 115,
+      "mask": 0
+    },
+    "input_b": {
+      "value": 14,
+      "mask": 32
+    },
+    "c_output": {
+      "value": 10,
+      "mask": 7904
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 131071
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 38,
+    "input_a": {
+      "value": 115,
+      "mask": 0
+    },
+    "input_b": {
+      "value": 14,
+      "mask": 32
+    },
+    "c_output": {
+      "value": 10,
+      "mask": 7904
+    },
+    "rust_output": {
+      "value": 1034,
+      "mask": 4832
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 39,
+    "input_a": {
+      "value": 43,
+      "mask": 80
+    },
+    "input_b": {
+      "value": 215,
+      "mask": 8
+    },
+    "c_output": {
+      "value": 5,
+      "mask": 65528
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 4194303
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 39,
+    "input_a": {
+      "value": 43,
+      "mask": 80
+    },
+    "input_b": {
+      "value": 215,
+      "mask": 8
+    },
+    "c_output": {
+      "value": 5,
+      "mask": 65528
+    },
+    "rust_output": {
+      "value": 5,
+      "mask": 32760
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 40,
+    "input_a": {
+      "value": 142,
+      "mask": 112
+    },
+    "input_b": {
+      "value": 161,
+      "mask": 2
+    },
+    "c_output": {
+      "value": 2,
+      "mask": 131068
+    },
+    "rust_output": {
+      "value": 2,
+      "mask": 65532
+    },
+    "method": "tnum_mul_opt"
+  },
+  {
+    "case_number": 40,
+    "input_a": {
+      "value": 142,
+      "mask": 112
+    },
+    "input_b": {
+      "value": 161,
+      "mask": 2
+    },
+    "c_output": {
+      "value": 2,
+      "mask": 131068
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 2097151
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 40,
+    "input_a": {
+      "value": 142,
+      "mask": 112
+    },
+    "input_b": {
+      "value": 161,
+      "mask": 2
+    },
+    "c_output": {
+      "value": 2,
+      "mask": 131068
+    },
+    "rust_output": {
+      "value": 2,
+      "mask": 65532
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 41,
+    "input_a": {
+      "value": 234,
+      "mask": 4
+    },
+    "input_b": {
+      "value": 103,
+      "mask": 8
+    },
+    "c_output": {
+      "value": 16386,
+      "mask": 16380
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 1048574
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 41,
+    "input_a": {
+      "value": 234,
+      "mask": 4
+    },
+    "input_b": {
+      "value": 103,
+      "mask": 8
+    },
+    "c_output": {
+      "value": 16386,
+      "mask": 16380
+    },
+    "rust_output": {
+      "value": 2,
+      "mask": 32756
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 42,
+    "input_a": {
+      "value": 126,
+      "mask": 1
+    },
+    "input_b": {
+      "value": 217,
+      "mask": 36
+    },
+    "c_output": {
+      "value": 2,
+      "mask": 65533
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 1048575
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 42,
+    "input_a": {
+      "value": 126,
+      "mask": 1
+    },
+    "input_b": {
+      "value": 217,
+      "mask": 36
+    },
+    "c_output": {
+      "value": 2,
+      "mask": 65533
+    },
+    "rust_output": {
+      "value": 2,
+      "mask": 32765
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 43,
+    "input_a": {
+      "value": 188,
+      "mask": 0
+    },
+    "input_b": {
+      "value": 224,
+      "mask": 11
+    },
+    "c_output": {
+      "value": 40960,
+      "mask": 8188
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 131068
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 43,
+    "input_a": {
+      "value": 188,
+      "mask": 0
+    },
+    "input_b": {
+      "value": 224,
+      "mask": 11
+    },
+    "c_output": {
+      "value": 40960,
+      "mask": 8188
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 65532
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 44,
+    "input_a": {
+      "value": 107,
+      "mask": 148
+    },
+    "input_b": {
+      "value": 97,
+      "mask": 142
+    },
+    "c_output": {
+      "value": 1,
+      "mask": 131070
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 268435455
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 44,
+    "input_a": {
+      "value": 107,
+      "mask": 148
+    },
+    "input_b": {
+      "value": 97,
+      "mask": 142
+    },
+    "c_output": {
+      "value": 1,
+      "mask": 131070
+    },
+    "rust_output": {
+      "value": 1,
+      "mask": 65534
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 45,
+    "input_a": {
+      "value": 111,
+      "mask": 128
+    },
+    "input_b": {
+      "value": 92,
+      "mask": 33
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 65535
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 33554431
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 45,
+    "input_a": {
+      "value": 111,
+      "mask": 128
+    },
+    "input_b": {
+      "value": 92,
+      "mask": 33
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 65535
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 32767
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 46,
+    "input_a": {
+      "value": 81,
+      "mask": 142
+    },
+    "input_b": {
+      "value": 34,
+      "mask": 72
+    },
+    "c_output": {
+      "value": 2,
+      "mask": 65532
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 67108862
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 46,
+    "input_a": {
+      "value": 81,
+      "mask": 142
+    },
+    "input_b": {
+      "value": 34,
+      "mask": 72
+    },
+    "c_output": {
+      "value": 2,
+      "mask": 65532
+    },
+    "rust_output": {
+      "value": 2,
+      "mask": 32764
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 47,
+    "input_a": {
+      "value": 55,
+      "mask": 72
+    },
+    "input_b": {
+      "value": 53,
+      "mask": 130
+    },
+    "c_output": {
+      "value": 1,
+      "mask": 65534
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 33554431
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 47,
+    "input_a": {
+      "value": 55,
+      "mask": 72
+    },
+    "input_b": {
+      "value": 53,
+      "mask": 130
+    },
+    "c_output": {
+      "value": 1,
+      "mask": 65534
+    },
+    "rust_output": {
+      "value": 1,
+      "mask": 32762
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 48,
+    "input_a": {
+      "value": 191,
+      "mask": 0
+    },
+    "input_b": {
+      "value": 249,
+      "mask": 6
+    },
+    "c_output": {
+      "value": 32769,
+      "mask": 32766
+    },
+    "rust_output": {
+      "value": 32768,
+      "mask": 32767
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 48,
+    "input_a": {
+      "value": 191,
+      "mask": 0
+    },
+    "input_b": {
+      "value": 249,
+      "mask": 6
+    },
+    "c_output": {
+      "value": 32769,
+      "mask": 32766
+    },
+    "rust_output": {
+      "value": 1,
+      "mask": 65534
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 49,
+    "input_a": {
+      "value": 94,
+      "mask": 128
+    },
+    "input_b": {
+      "value": 72,
+      "mask": 52
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 65528
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 33554428
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 49,
+    "input_a": {
+      "value": 94,
+      "mask": 128
+    },
+    "input_b": {
+      "value": 72,
+      "mask": 52
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 65528
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 32760
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 50,
+    "input_a": {
+      "value": 226,
+      "mask": 29
+    },
+    "input_b": {
+      "value": 86,
+      "mask": 9
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 65535
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 2097151
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 50,
+    "input_a": {
+      "value": 226,
+      "mask": 29
+    },
+    "input_b": {
+      "value": 86,
+      "mask": 9
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 65535
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 32767
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 51,
+    "input_a": {
+      "value": 155,
+      "mask": 4
+    },
+    "input_b": {
+      "value": 189,
+      "mask": 2
+    },
+    "c_output": {
+      "value": 1,
+      "mask": 65534
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 524287
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 52,
+    "input_a": {
+      "value": 252,
+      "mask": 3
+    },
+    "input_b": {
+      "value": 107,
+      "mask": 16
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 65535
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 1048575
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 52,
+    "input_a": {
+      "value": 252,
+      "mask": 3
+    },
+    "input_b": {
+      "value": 107,
+      "mask": 16
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 65535
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 32767
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 53,
+    "input_a": {
+      "value": 160,
+      "mask": 23
+    },
+    "input_b": {
+      "value": 117,
+      "mask": 8
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 65535
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 2097151
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 53,
+    "input_a": {
+      "value": 160,
+      "mask": 23
+    },
+    "input_b": {
+      "value": 117,
+      "mask": 8
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 65535
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 32767
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 54,
+    "input_a": {
+      "value": 52,
+      "mask": 3
+    },
+    "input_b": {
+      "value": 189,
+      "mask": 0
+    },
+    "c_output": {
+      "value": 8192,
+      "mask": 4095
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 16383
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 55,
+    "input_a": {
+      "value": 106,
+      "mask": 16
+    },
+    "input_b": {
+      "value": 220,
+      "mask": 34
+    },
+    "c_output": {
+      "value": 8,
+      "mask": 65524
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 16777214
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 55,
+    "input_a": {
+      "value": 106,
+      "mask": 16
+    },
+    "input_b": {
+      "value": 220,
+      "mask": 34
+    },
+    "c_output": {
+      "value": 8,
+      "mask": 65524
+    },
+    "rust_output": {
+      "value": 8,
+      "mask": 32756
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 56,
+    "input_a": {
+      "value": 253,
+      "mask": 2
+    },
+    "input_b": {
+      "value": 148,
+      "mask": 66
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 131070
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 16777215
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 56,
+    "input_a": {
+      "value": 253,
+      "mask": 2
+    },
+    "input_b": {
+      "value": 148,
+      "mask": 66
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 131070
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 65534
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 57,
+    "input_a": {
+      "value": 216,
+      "mask": 33
+    },
+    "input_b": {
+      "value": 183,
+      "mask": 8
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 131071
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 8388607
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 57,
+    "input_a": {
+      "value": 216,
+      "mask": 33
+    },
+    "input_b": {
+      "value": 183,
+      "mask": 8
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 131071
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 65535
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 58,
+    "input_a": {
+      "value": 192,
+      "mask": 63
+    },
+    "input_b": {
+      "value": 99,
+      "mask": 148
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 131071
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 67108863
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 58,
+    "input_a": {
+      "value": 192,
+      "mask": 63
+    },
+    "input_b": {
+      "value": 99,
+      "mask": 148
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 131071
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 65535
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 59,
+    "input_a": {
+      "value": 132,
+      "mask": 49
+    },
+    "input_b": {
+      "value": 117,
+      "mask": 130
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 131071
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 67108863
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 59,
+    "input_a": {
+      "value": 132,
+      "mask": 49
+    },
+    "input_b": {
+      "value": 117,
+      "mask": 130
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 131071
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 65535
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 60,
+    "input_a": {
+      "value": 11,
+      "mask": 180
+    },
+    "input_b": {
+      "value": 134,
+      "mask": 113
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 131071
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 134217727
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 60,
+    "input_a": {
+      "value": 11,
+      "mask": 180
+    },
+    "input_b": {
+      "value": 134,
+      "mask": 113
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 131071
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 65535
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 61,
+    "input_a": {
+      "value": 36,
+      "mask": 201
+    },
+    "input_b": {
+      "value": 203,
+      "mask": 20
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 131071
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 67108863
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 61,
+    "input_a": {
+      "value": 36,
+      "mask": 201
+    },
+    "input_b": {
+      "value": 203,
+      "mask": 20
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 131071
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 65535
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 62,
+    "input_a": {
+      "value": 216,
+      "mask": 33
+    },
+    "input_b": {
+      "value": 10,
+      "mask": 69
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 65535
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 16777215
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 62,
+    "input_a": {
+      "value": 216,
+      "mask": 33
+    },
+    "input_b": {
+      "value": 10,
+      "mask": 69
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 65535
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 32767
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 63,
+    "input_a": {
+      "value": 39,
+      "mask": 208
+    },
+    "input_b": {
+      "value": 185,
+      "mask": 70
+    },
+    "c_output": {
+      "value": 1,
+      "mask": 131070
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 268435455
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 63,
+    "input_a": {
+      "value": 39,
+      "mask": 208
+    },
+    "input_b": {
+      "value": 185,
+      "mask": 70
+    },
+    "c_output": {
+      "value": 1,
+      "mask": 131070
+    },
+    "rust_output": {
+      "value": 1,
+      "mask": 65534
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 64,
+    "input_a": {
+      "value": 144,
+      "mask": 108
+    },
+    "input_b": {
+      "value": 141,
+      "mask": 96
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 131068
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 268435452
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 64,
+    "input_a": {
+      "value": 144,
+      "mask": 108
+    },
+    "input_b": {
+      "value": 141,
+      "mask": 96
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 131068
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 65532
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 65,
+    "input_a": {
+      "value": 171,
+      "mask": 0
+    },
+    "input_b": {
+      "value": 249,
+      "mask": 6
+    },
+    "c_output": {
+      "value": 40961,
+      "mask": 4094
+    },
+    "rust_output": {
+      "value": 40960,
+      "mask": 8191
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 65,
+    "input_a": {
+      "value": 171,
+      "mask": 0
+    },
+    "input_b": {
+      "value": 249,
+      "mask": 6
+    },
+    "c_output": {
+      "value": 40961,
+      "mask": 4094
+    },
+    "rust_output": {
+      "value": 1,
+      "mask": 65534
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 66,
+    "input_a": {
+      "value": 155,
+      "mask": 64
+    },
+    "input_b": {
+      "value": 7,
+      "mask": 160
+    },
+    "c_output": {
+      "value": 29,
+      "mask": 131040
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 134217727
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 66,
+    "input_a": {
+      "value": 155,
+      "mask": 64
+    },
+    "input_b": {
+      "value": 7,
+      "mask": 160
+    },
+    "c_output": {
+      "value": 29,
+      "mask": 131040
+    },
+    "rust_output": {
+      "value": 29,
+      "mask": 65504
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 67,
+    "input_a": {
+      "value": 114,
+      "mask": 0
+    },
+    "input_b": {
+      "value": 90,
+      "mask": 37
+    },
+    "c_output": {
+      "value": 4,
+      "mask": 32762
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 524286
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 67,
+    "input_a": {
+      "value": 114,
+      "mask": 0
+    },
+    "input_b": {
+      "value": 90,
+      "mask": 37
+    },
+    "c_output": {
+      "value": 4,
+      "mask": 32762
+    },
+    "rust_output": {
+      "value": 4,
+      "mask": 16378
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 68,
+    "input_a": {
+      "value": 73,
+      "mask": 148
+    },
+    "input_b": {
+      "value": 186,
+      "mask": 64
+    },
+    "c_output": {
+      "value": 2,
+      "mask": 131064
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 268435454
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 68,
+    "input_a": {
+      "value": 73,
+      "mask": 148
+    },
+    "input_b": {
+      "value": 186,
+      "mask": 64
+    },
+    "c_output": {
+      "value": 2,
+      "mask": 131064
+    },
+    "rust_output": {
+      "value": 2,
+      "mask": 65528
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 69,
+    "input_a": {
+      "value": 255,
+      "mask": 0
+    },
+    "input_b": {
+      "value": 91,
+      "mask": 128
+    },
+    "c_output": {
+      "value": 37,
+      "mask": 65408
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 4194303
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 69,
+    "input_a": {
+      "value": 255,
+      "mask": 0
+    },
+    "input_b": {
+      "value": 91,
+      "mask": 128
+    },
+    "c_output": {
+      "value": 37,
+      "mask": 65408
+    },
+    "rust_output": {
+      "value": 23077,
+      "mask": 32896
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 70,
+    "input_a": {
+      "value": 122,
+      "mask": 5
+    },
+    "input_b": {
+      "value": 113,
+      "mask": 128
+    },
+    "c_output": {
+      "value": 10,
+      "mask": 65525
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 8388607
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 70,
+    "input_a": {
+      "value": 122,
+      "mask": 5
+    },
+    "input_b": {
+      "value": 113,
+      "mask": 128
+    },
+    "c_output": {
+      "value": 10,
+      "mask": 65525
+    },
+    "rust_output": {
+      "value": 10,
+      "mask": 32757
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 71,
+    "input_a": {
+      "value": 186,
+      "mask": 5
+    },
+    "input_b": {
+      "value": 48,
+      "mask": 71
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 65535
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 4194303
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 71,
+    "input_a": {
+      "value": 186,
+      "mask": 5
+    },
+    "input_b": {
+      "value": 48,
+      "mask": 71
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 65535
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 32767
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 72,
+    "input_a": {
+      "value": 159,
+      "mask": 32
+    },
+    "input_b": {
+      "value": 251,
+      "mask": 0
+    },
+    "c_output": {
+      "value": 32773,
+      "mask": 16352
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 2097151
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 72,
+    "input_a": {
+      "value": 159,
+      "mask": 32
+    },
+    "input_b": {
+      "value": 251,
+      "mask": 0
+    },
+    "c_output": {
+      "value": 32773,
+      "mask": 16352
+    },
+    "rust_output": {
+      "value": 32837,
+      "mask": 16288
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 73,
+    "input_a": {
+      "value": 222,
+      "mask": 32
+    },
+    "input_b": {
+      "value": 193,
+      "mask": 24
+    },
+    "c_output": {
+      "value": 14,
+      "mask": 131056
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 16777215
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 73,
+    "input_a": {
+      "value": 222,
+      "mask": 32
+    },
+    "input_b": {
+      "value": 193,
+      "mask": 24
+    },
+    "c_output": {
+      "value": 14,
+      "mask": 131056
+    },
+    "rust_output": {
+      "value": 14,
+      "mask": 65520
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 74,
+    "input_a": {
+      "value": 172,
+      "mask": 16
+    },
+    "input_b": {
+      "value": 8,
+      "mask": 161
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 131068
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 65532
+    },
+    "method": "tnum_mul_opt"
+  },
+  {
+    "case_number": 74,
+    "input_a": {
+      "value": 172,
+      "mask": 16
+    },
+    "input_b": {
+      "value": 8,
+      "mask": 161
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 131068
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 33554428
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 74,
+    "input_a": {
+      "value": 172,
+      "mask": 16
+    },
+    "input_b": {
+      "value": 8,
+      "mask": 161
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 131068
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 65532
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 75,
+    "input_a": {
+      "value": 5,
+      "mask": 250
+    },
+    "input_b": {
+      "value": 142,
+      "mask": 97
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 131071
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 268435455
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 75,
+    "input_a": {
+      "value": 5,
+      "mask": 250
+    },
+    "input_b": {
+      "value": 142,
+      "mask": 97
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 131071
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 65535
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 76,
+    "input_a": {
+      "value": 220,
+      "mask": 32
+    },
+    "input_b": {
+      "value": 225,
+      "mask": 22
+    },
+    "c_output": {
+      "value": 4,
+      "mask": 131064
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 33554431
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 76,
+    "input_a": {
+      "value": 220,
+      "mask": 32
+    },
+    "input_b": {
+      "value": 225,
+      "mask": 22
+    },
+    "c_output": {
+      "value": 4,
+      "mask": 131064
+    },
+    "rust_output": {
+      "value": 4,
+      "mask": 65528
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 77,
+    "input_a": {
+      "value": 147,
+      "mask": 96
+    },
+    "input_b": {
+      "value": 137,
+      "mask": 2
+    },
+    "c_output": {
+      "value": 1,
+      "mask": 65534
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 2097151
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 78,
+    "input_a": {
+      "value": 191,
+      "mask": 0
+    },
+    "input_b": {
+      "value": 137,
+      "mask": 98
+    },
+    "c_output": {
+      "value": 1,
+      "mask": 65534
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 2097151
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 78,
+    "input_a": {
+      "value": 191,
+      "mask": 0
+    },
+    "input_b": {
+      "value": 137,
+      "mask": 98
+    },
+    "c_output": {
+      "value": 1,
+      "mask": 65534
+    },
+    "rust_output": {
+      "value": 5,
+      "mask": 65530
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 79,
+    "input_a": {
+      "value": 108,
+      "mask": 131
+    },
+    "input_b": {
+      "value": 228,
+      "mask": 10
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 131070
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 16777214
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 79,
+    "input_a": {
+      "value": 108,
+      "mask": 131
+    },
+    "input_b": {
+      "value": 228,
+      "mask": 10
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 131070
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 65534
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 80,
+    "input_a": {
+      "value": 74,
+      "mask": 160
+    },
+    "input_b": {
+      "value": 12,
+      "mask": 97
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 65530
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 67108863
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 80,
+    "input_a": {
+      "value": 74,
+      "mask": 160
+    },
+    "input_b": {
+      "value": 12,
+      "mask": 97
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 65530
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 32762
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 81,
+    "input_a": {
+      "value": 68,
+      "mask": 145
+    },
+    "input_b": {
+      "value": 91,
+      "mask": 4
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 32767
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 8388607
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 82,
+    "input_a": {
+      "value": 213,
+      "mask": 34
+    },
+    "input_b": {
+      "value": 119,
+      "mask": 0
+    },
+    "c_output": {
+      "value": 24577,
+      "mask": 8190
+    },
+    "rust_output": {
+      "value": 1,
+      "mask": 65534
+    },
+    "method": "tnum_mul_opt"
+  },
+  {
+    "case_number": 82,
+    "input_a": {
+      "value": 213,
+      "mask": 34
+    },
+    "input_b": {
+      "value": 119,
+      "mask": 0
+    },
+    "c_output": {
+      "value": 24577,
+      "mask": 8190
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 1048575
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 82,
+    "input_a": {
+      "value": 213,
+      "mask": 34
+    },
+    "input_b": {
+      "value": 119,
+      "mask": 0
+    },
+    "c_output": {
+      "value": 24577,
+      "mask": 8190
+    },
+    "rust_output": {
+      "value": 1,
+      "mask": 32766
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 83,
+    "input_a": {
+      "value": 106,
+      "mask": 128
+    },
+    "input_b": {
+      "value": 27,
+      "mask": 0
+    },
+    "c_output": {
+      "value": 46,
+      "mask": 8064
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 524287
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 84,
+    "input_a": {
+      "value": 48,
+      "mask": 64
+    },
+    "input_b": {
+      "value": 4,
+      "mask": 115
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 32752
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 16777214
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 84,
+    "input_a": {
+      "value": 48,
+      "mask": 64
+    },
+    "input_b": {
+      "value": 4,
+      "mask": 115
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 32752
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 16368
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 85,
+    "input_a": {
+      "value": 91,
+      "mask": 128
+    },
+    "input_b": {
+      "value": 97,
+      "mask": 130
+    },
+    "c_output": {
+      "value": 1,
+      "mask": 131070
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 268435455
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 85,
+    "input_a": {
+      "value": 91,
+      "mask": 128
+    },
+    "input_b": {
+      "value": 97,
+      "mask": 130
+    },
+    "c_output": {
+      "value": 1,
+      "mask": 131070
+    },
+    "rust_output": {
+      "value": 1,
+      "mask": 65530
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 86,
+    "input_a": {
+      "value": 82,
+      "mask": 41
+    },
+    "input_b": {
+      "value": 75,
+      "mask": 48
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 32767
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 16777215
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 86,
+    "input_a": {
+      "value": 82,
+      "mask": 41
+    },
+    "input_b": {
+      "value": 75,
+      "mask": 48
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 32767
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 16383
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 87,
+    "input_a": {
+      "value": 62,
+      "mask": 64
+    },
+    "input_b": {
+      "value": 60,
+      "mask": 131
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 65534
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 33554430
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 87,
+    "input_a": {
+      "value": 62,
+      "mask": 64
+    },
+    "input_b": {
+      "value": 60,
+      "mask": 131
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 65534
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 32766
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 88,
+    "input_a": {
+      "value": 104,
+      "mask": 20
+    },
+    "input_b": {
+      "value": 195,
+      "mask": 48
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 65532
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 16777212
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 88,
+    "input_a": {
+      "value": 104,
+      "mask": 20
+    },
+    "input_b": {
+      "value": 195,
+      "mask": 48
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 65532
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 32764
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 89,
+    "input_a": {
+      "value": 168,
+      "mask": 18
+    },
+    "input_b": {
+      "value": 42,
+      "mask": 128
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 32756
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 33554430
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 89,
+    "input_a": {
+      "value": 168,
+      "mask": 18
+    },
+    "input_b": {
+      "value": 42,
+      "mask": 128
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 32756
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 65524
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 90,
+    "input_a": {
+      "value": 28,
+      "mask": 194
+    },
+    "input_b": {
+      "value": 43,
+      "mask": 4
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 32766
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 4194303
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 90,
+    "input_a": {
+      "value": 28,
+      "mask": 194
+    },
+    "input_b": {
+      "value": 43,
+      "mask": 4
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 32766
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 16382
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 91,
+    "input_a": {
+      "value": 21,
+      "mask": 40
+    },
+    "input_b": {
+      "value": 189,
+      "mask": 64
+    },
+    "c_output": {
+      "value": 1,
+      "mask": 32744
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 16777215
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 91,
+    "input_a": {
+      "value": 21,
+      "mask": 40
+    },
+    "input_b": {
+      "value": 189,
+      "mask": 64
+    },
+    "c_output": {
+      "value": 1,
+      "mask": 32744
+    },
+    "rust_output": {
+      "value": 1,
+      "mask": 16360
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 92,
+    "input_a": {
+      "value": 127,
+      "mask": 0
+    },
+    "input_b": {
+      "value": 7,
+      "mask": 176
+    },
+    "c_output": {
+      "value": 9,
+      "mask": 65520
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 2097151
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 92,
+    "input_a": {
+      "value": 127,
+      "mask": 0
+    },
+    "input_b": {
+      "value": 7,
+      "mask": 176
+    },
+    "c_output": {
+      "value": 9,
+      "mask": 65520
+    },
+    "rust_output": {
+      "value": 9,
+      "mask": 32752
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 93,
+    "input_a": {
+      "value": 131,
+      "mask": 64
+    },
+    "input_b": {
+      "value": 31,
+      "mask": 96
+    },
+    "c_output": {
+      "value": 29,
+      "mask": 65504
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 67108863
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 93,
+    "input_a": {
+      "value": 131,
+      "mask": 64
+    },
+    "input_b": {
+      "value": 31,
+      "mask": 96
+    },
+    "c_output": {
+      "value": 29,
+      "mask": 65504
+    },
+    "rust_output": {
+      "value": 29,
+      "mask": 32736
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 94,
+    "input_a": {
+      "value": 173,
+      "mask": 82
+    },
+    "input_b": {
+      "value": 200,
+      "mask": 0
+    },
+    "c_output": {
+      "value": 40,
+      "mask": 130960
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 4194296
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 94,
+    "input_a": {
+      "value": 173,
+      "mask": 82
+    },
+    "input_b": {
+      "value": 200,
+      "mask": 0
+    },
+    "c_output": {
+      "value": 40,
+      "mask": 130960
+    },
+    "rust_output": {
+      "value": 40,
+      "mask": 65424
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 95,
+    "input_a": {
+      "value": 154,
+      "mask": 32
+    },
+    "input_b": {
+      "value": 12,
+      "mask": 130
+    },
+    "c_output": {
+      "value": 8,
+      "mask": 65524
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 67108862
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 95,
+    "input_a": {
+      "value": 154,
+      "mask": 32
+    },
+    "input_b": {
+      "value": 12,
+      "mask": 130
+    },
+    "c_output": {
+      "value": 8,
+      "mask": 65524
+    },
+    "rust_output": {
+      "value": 8,
+      "mask": 32756
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 96,
+    "input_a": {
+      "value": 81,
+      "mask": 168
+    },
+    "input_b": {
+      "value": 3,
+      "mask": 112
+    },
+    "c_output": {
+      "value": 3,
+      "mask": 65528
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 67108863
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 96,
+    "input_a": {
+      "value": 81,
+      "mask": 168
+    },
+    "input_b": {
+      "value": 3,
+      "mask": 112
+    },
+    "c_output": {
+      "value": 3,
+      "mask": 65528
+    },
+    "rust_output": {
+      "value": 3,
+      "mask": 32760
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 97,
+    "input_a": {
+      "value": 109,
+      "mask": 128
+    },
+    "input_b": {
+      "value": 11,
+      "mask": 16
+    },
+    "c_output": {
+      "value": 47,
+      "mask": 16336
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 4194303
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 97,
+    "input_a": {
+      "value": 109,
+      "mask": 128
+    },
+    "input_b": {
+      "value": 11,
+      "mask": 16
+    },
+    "c_output": {
+      "value": 47,
+      "mask": 16336
+    },
+    "rust_output": {
+      "value": 47,
+      "mask": 8144
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 98,
+    "input_a": {
+      "value": 249,
+      "mask": 6
+    },
+    "input_b": {
+      "value": 219,
+      "mask": 36
+    },
+    "c_output": {
+      "value": 1,
+      "mask": 131070
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 8388607
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 98,
+    "input_a": {
+      "value": 249,
+      "mask": 6
+    },
+    "input_b": {
+      "value": 219,
+      "mask": 36
+    },
+    "c_output": {
+      "value": 1,
+      "mask": 131070
+    },
+    "rust_output": {
+      "value": 1,
+      "mask": 65534
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 99,
+    "input_a": {
+      "value": 93,
+      "mask": 130
+    },
+    "input_b": {
+      "value": 5,
+      "mask": 72
+    },
+    "c_output": {
+      "value": 1,
+      "mask": 65530
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 67108863
+    },
+    "method": "xtnum_mul_top"
+  },
+  {
+    "case_number": 99,
+    "input_a": {
+      "value": 93,
+      "mask": 130
+    },
+    "input_b": {
+      "value": 5,
+      "mask": 72
+    },
+    "c_output": {
+      "value": 1,
+      "mask": 65530
+    },
+    "rust_output": {
+      "value": 1,
+      "mask": 32762
+    },
+    "method": "xtnum_mul_high_top"
+  },
+  {
+    "case_number": 100,
+    "input_a": {
+      "value": 156,
+      "mask": 2
+    },
+    "input_b": {
+      "value": 136,
+      "mask": 71
+    },
+    "c_output": {
+      "value": 0,
+      "mask": 65534
+    },
+    "rust_output": {
+      "value": 0,
+      "mask": 8388606
+    },
+    "method": "xtnum_mul_top"
+  }
+]

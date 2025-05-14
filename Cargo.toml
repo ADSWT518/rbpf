@@ -55,4 +55,8 @@ rand = "0.8"
 
 [[bin]]
 name = "test_mul"
-path = "tests/tnum.rs"
+path = "tests/tnum_mul.rs"
+
+[[bin]]
+name = "compare"
+path = "tests/compare.rs"
