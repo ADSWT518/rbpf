@@ -1,9 +1,6 @@
 //! This is a tnum implementation for Solana eBPF
 
 // This is for bit-level abstraction
-
-use crate::elf_parser::types::Elf64Section;
-
 #[derive(Debug, Clone, Copy)]
 /// tnum definition
 pub struct Tnum {
@@ -16,7 +13,7 @@ impl Tnum {
     pub fn new(value: u64, mask: u64) -> Self {
         Self { value, mask }
     }
-    
+
     /// 获取 value 字段
     pub fn value(&self) -> u64 {
         self.value
@@ -50,12 +47,18 @@ pub fn tnum_range(min: u64, max: u64) -> Tnum {
 
 /// tnum 的左移操作
 pub fn tnum_lshift(a: Tnum, shift: u8) -> Tnum {
-    Tnum::new(a.value << shift, a.mask << shift)
+    Tnum::new(
+        a.value.wrapping_shl(shift as u32),
+        a.mask.wrapping_shl(shift as u32),
+    )
 }
 
 /// tnum 的右移操作
 pub fn tnum_rshift(a: Tnum, shift: u8) -> Tnum {
-    Tnum::new(a.value >> shift, a.mask >> shift)
+    Tnum::new(
+        a.value.wrapping_shr(shift as u32),
+        a.mask.wrapping_shr(shift as u32),
+    )
 }
 
 /// tnum 算数右移的操作
@@ -79,14 +82,14 @@ pub fn tnum_arshift(a: Tnum, min_shift: u8, insn_bitness: u8) -> Tnum {
 /// tnum 的加法操作
 pub fn tnum_add(a: Tnum, b: Tnum) -> Tnum {
     // 计算掩码之和 - 表示两个不确定数的掩码组合
-    let sm = a.mask + b.mask;
+    let sm = a.mask.wrapping_add(b.mask);
 
     // 计算确定值之和
-    let sv = a.value + b.value;
+    let sv = a.value.wrapping_add(b.value);
 
     // sigma = (a.mask + b.mask) + (a.value + b.value)
     // 用于检测进位传播情况
-    let sigma = sm + sv;
+    let sigma = sm.wrapping_add(sv);
 
     // chi = 进位传播位图
     // 通过异或操作找出哪些位发生了进位
@@ -106,9 +109,9 @@ pub fn tnum_add(a: Tnum, b: Tnum) -> Tnum {
 
 /// tnum 的减法操作
 pub fn tnum_sub(a: Tnum, b: Tnum) -> Tnum {
-    let dv = a.value - b.value;
-    let alpha = dv + a.mask;
-    let beta = dv - b.mask;
+    let dv = a.value.wrapping_sub(b.value);
+    let alpha = dv.wrapping_add(a.mask);
+    let beta = dv.wrapping_sub(b.mask);
     let chi = alpha ^ beta;
     let mu = chi | a.mask | b.mask;
     Tnum::new(dv & !mu, mu)
@@ -141,7 +144,7 @@ pub fn tnum_xor(a: Tnum, b: Tnum) -> Tnum {
 
 /// tnum 的乘法操作
 pub fn tnum_mul(mut a: Tnum, mut b: Tnum) -> Tnum {
-    let acc_v = a.value * b.value;
+    let acc_v = a.value.wrapping_mul(b.value);
     let mut acc_m: Tnum = Tnum::new(0, 0);
     while (a.value != 0) || (a.mask != 0) {
         if (a.value & 1) != 0 {
@@ -158,87 +161,84 @@ pub fn tnum_mul(mut a: Tnum, mut b: Tnum) -> Tnum {
 /// A constant-value optimization for tnum_mul
 pub fn tnum_mul_opt(a: Tnum, b: Tnum) -> Tnum {
     // 如果一个是常数
-    if a.mask == 0 && a.value.count_ones() == 1 { // a.value = 2 ^ x
+    if a.mask == 0 && a.value.count_ones() == 1 {
+        // a.value = 2 ^ x
         tnum_lshift(b, a.value.trailing_zeros() as u8)
-    } else if b.mask == 0  && b.value.count_ones() == 1 { // a.value = 2 ^ x
+    } else if b.mask == 0 && b.value.count_ones() == 1 {
+        // a.value = 2 ^ x
         tnum_lshift(a, b.value.trailing_zeros() as u8)
-    } else 
-        if (a.value | a.mask).count_ones() <= (b.value | b.mask).count_ones() {
-        tnum_mul(a, b)
     } else {
-        tnum_mul(b, a)
+        tnum_mul(a, b)
     }
 }
 
 #[test]
-fn test_tnum_mul () -> (){
+fn test_tnum_mul() -> () {
     let a = Tnum::new(0b100, 0b011);
     let b = Tnum::new(0b111, 0b000);
     println!("{:?}", tnum_mul(a, b));
     println!("{:?}", tnum_mul_opt(a, b));
 }
 
-
 ///computes the join of the tnum domain.
-pub fn tnum_join (a: Tnum, b: Tnum) -> Tnum {
+pub fn tnum_join(a: Tnum, b: Tnum) -> Tnum {
     let v = a.value ^ b.value;
     let m = (a.mask | b.mask) | v;
-        Tnum::new((a.value | b.value) & (!m), m)
+    Tnum::new((a.value | b.value) & (!m), m)
 }
 
 /// [split_at_mu] splits a tnum at the first unknow.
-fn split_at_mu (x:Tnum) -> (Tnum, u32 , Tnum) {
+fn split_at_mu(x: Tnum) -> (Tnum, u32, Tnum) {
     let i = x.mask.leading_ones();
-    let x1 = Tnum::new(x.value >> (i+1), x.mask >> (i+1));
+    let x1 = Tnum::new(x.value >> (i + 1), x.mask >> (i + 1));
     let x2 = Tnum::new(x.value & ((1 << i) - 1), x.mask & ((1 << i) - 1));
-        (x1,i,x2)
+    (x1, i, x2)
 }
 
 /// [tnum_mul_const] multiplies a constant [c] by the tnum [x]
 /// which has [j] unknown bits and [n] is the fuel (Z.of_nat n = j).
-fn tnum_mul_const (c:u64, x:Tnum, n:u64) -> Tnum {
+fn tnum_mul_const(c: u64, x: Tnum, n: u64) -> Tnum {
     if n == 0 {
-        Tnum::new(c * x.value, 0)
+        Tnum::new(c.wrapping_mul(x.value), 0)
     } else {
-        let (y1,i1,y2) = split_at_mu(x);
-        let p = tnum_mul_const(c,y1,n-1);
-        let mc = Tnum::new(c * y2.mask,0);
-        let mu0 = tnum_add(tnum_lshift(p, (i1+1) as u8), mc);
-        let mu1 = tnum_add(mu0, Tnum::new(c<<i1,0));
-           tnum_join(mu0, mu1)
+        let (y1, i1, y2) = split_at_mu(x);
+        let p = tnum_mul_const(c, y1, n - 1);
+        let mc = Tnum::new(c.wrapping_mul(y2.mask), 0);
+        let mu0 = tnum_add(tnum_lshift(p, (i1 + 1) as u8), mc);
+        let mu1 = tnum_add(mu0, Tnum::new(c.wrapping_shl(i1), 0));
+        tnum_join(mu0, mu1)
     }
-
 }
 
 /// [xtnum_mul x i y j] computes the multiplication of
 /// [x]  which has [i] unknown bits by
 /// [y]  which has [j] unknown bits such (i <= j)
-fn xtnum_mul (x:Tnum, i: u64, y:Tnum, j: u64) -> Tnum {
+fn xtnum_mul(x: Tnum, i: u64, y: Tnum, j: u64) -> Tnum {
     if i == 0 && j == 0 {
         Tnum::new(x.value * y.value, 0)
     } else {
-        let (y1,i1,y2) = split_at_mu(y); // y = y1.mu.y2
+        let (y1, i1, y2) = split_at_mu(y); // y = y1.mu.y2
         let p = if i == j {
-            xtnum_mul(y1, j-1, x, i)
+            xtnum_mul(y1, j - 1, x, i)
         } else {
-            xtnum_mul(x, i, y1, j-1)
+            xtnum_mul(x, i, y1, j - 1)
         };
         let mc = tnum_mul_const(y2.value, x, i);
-        let mu0 = tnum_add(tnum_lshift(p, (i1+1) as u8), mc);
+        let mu0 = tnum_add(tnum_lshift(p, (i1 + 1) as u8), mc);
         let mu1 = tnum_add(mu0, tnum_lshift(x, i1 as u8));
-            tnum_join(mu0, mu1)
+        tnum_join(mu0, mu1)
     }
 }
 
 /// the top of the xtnum_mul
-pub fn xtnum_mul_top (x:Tnum, y:Tnum) -> Tnum {
+pub fn xtnum_mul_top(x: Tnum, y: Tnum) -> Tnum {
     let i = 64 - x.mask.leading_zeros() as u64;
     let j = 64 - y.mask.leading_zeros() as u64;
-        if i <= j {
-            xtnum_mul(x, i, y, j)
-        } else {
-            xtnum_mul(y, j, x, i)
-        }
+    if i <= j {
+        xtnum_mul(x, i, y, j)
+    } else {
+        xtnum_mul(y, j, x, i)
+    }
 }
 
 /// clear bit of n-th
@@ -252,7 +252,7 @@ fn tnum_clearbit(x: Tnum, pos: u8) -> Tnum {
 }
 
 /// bit size of a tnum
-fn tnum_size (x: Tnum) -> u8 {
+fn tnum_size(x: Tnum) -> u8 {
     let a = 64 - x.value.leading_zeros();
     let b = 64 - x.mask.leading_zeros();
     if a < b {
@@ -263,7 +263,7 @@ fn tnum_size (x: Tnum) -> u8 {
 }
 
 /// max 64 of a tnum
-fn tnum_max (a: Tnum) -> u64 {
+fn tnum_max(a: Tnum) -> u64 {
     a.value | a.mask
 }
 
@@ -279,86 +279,76 @@ fn testbit(num: u64, pos: u8) -> bool {
 /// [xtnum_mul_high x y n] multiplies x by y
 /// where n is the number of bits that are set in either x or y.
 /// We also have that x <= y and 0 <= x and 0 <= y
-fn xtnum_mul_high (x: Tnum, y: Tnum, n: u8) -> Tnum {
-    if x.mask == 0 && y.mask == 0 { //if both are constants, perform normal multiplication
-        Tnum::new(x.value * y.value, 0)
+fn xtnum_mul_high(x: Tnum, y: Tnum, n: u8) -> Tnum {
+    if x.mask == 0 && y.mask == 0 {
+        //if both are constants, perform normal multiplication
+        Tnum::new(x.value.wrapping_mul(y.value), 0)
     } else if n == 0 {
         //panic!("should not happen");
         Tnum::new(0, 0) //should not happen
     } else {
         let b = tnum_size(y);
-        let ym = testbit(y.mask, b-1);
-        let y_prime = tnum_clearbit(y, b-1); //clear the highest bit of y
-        let p =
-            if tnum_max(y_prime) <= tnum_max(x) {
-                xtnum_mul_high(y_prime, x, n-1)
-            } else {
-                xtnum_mul_high(x, y_prime, n-1)
-            };
-            if ym {
-                tnum_join(tnum_add(p,tnum_lshift(x, b-1)), p)
-            } else {
-                tnum_add(p, tnum_lshift(x, b-1))
-            }
+        let ym = testbit(y.mask, b - 1);
+        let y_prime = tnum_clearbit(y, b - 1); //clear the highest bit of y
+        let p = if tnum_max(y_prime) <= tnum_max(x) {
+            xtnum_mul_high(y_prime, x, n - 1)
+        } else {
+            xtnum_mul_high(x, y_prime, n - 1)
+        };
+        if ym {
+            tnum_join(tnum_add(p, tnum_lshift(x, b - 1)), p)
+        } else {
+            tnum_add(p, tnum_lshift(x, b - 1))
+        }
     }
 }
 
 /// the top level of xtnum_mul_high
-pub fn xtnum_mul_high_top (x: Tnum, y: Tnum) -> Tnum {
-    xtnum_mul_high(x, y,((x.value | x.mask).count_ones() + (y.value | y.mask).count_ones()) as u8)
-}
-
-/// a new tnum_mul without loop
-pub fn tnum_mul_simpl (x: Tnum, y: Tnum) -> Tnum {
-    let res = (x.value | x.mask) * (y.value | y.mask); // the maxinum tnum value (0, res)
-    //println!("res={:?}", res);
-    let ux = x.mask * (y.value | y.mask);
-    //println!("ux={:?}", ux);
-    let kx = x.value * y.mask;
-    //println!("kx={:?}", kx);
-    let ures = ux | kx;
-    //println!("ures={:?}", ures);
-    //println!("value={:?}", res & (!ures));
-        Tnum::new(res & (!ures), ures)
+pub fn xtnum_mul_high_top(x: Tnum, y: Tnum) -> Tnum {
+    xtnum_mul_high(
+        x,
+        y,
+        ((x.value | x.mask).count_ones() + (y.value | y.mask).count_ones()) as u8,
+    )
 }
 
 #[test]
-fn test_xtnum_mul () -> (){
-    // let a = Tnum::new(15, 0); // 2^4 - 1
-    // let b = Tnum::new(0, 31); // 2^5 - 1
-    
-    let a = Tnum::new(1, 4); 
-    let b = Tnum::new(2, 4);
+fn test_xtnum_mul() -> () {
+    let a = Tnum::new(15, 0); // 2^4 - 1
+    let b = Tnum::new(0, 31); // 2^5 - 1
     println!("{:?}", tnum_mul(a, b)); // Output: Tnum { value: 0, mask: 511 } 2^(4+5) -1
     println!("{:?}", xtnum_mul_top(a, b)); // Output: Tnum { value: 0, mask: 4095 }
     println!("{:?}", xtnum_mul_high_top(a, b)); // Tnum { value: 0, mask: 511 }
-    println!("{:?}", tnum_mul_simpl(a, b)); // Tnum { value: 0, mask: 511 }
 }
 
-
 /// aux function for tnum_mul_rec
-fn tnum_decompose (a: Tnum) -> (Tnum, Tnum) {
+fn tnum_decompose(a: Tnum) -> (Tnum, Tnum) {
     (
         Tnum::new(a.value >> 1, a.mask >> 1),
-        Tnum::new(a.value & 1, a.mask & 1)
+        Tnum::new(a.value & 1, a.mask & 1),
     )
 }
 
 /// A new tnum_mul proposed by frederic
 pub fn tnum_mul_rec(a: Tnum, b: Tnum) -> Tnum {
-    if a.mask == 0 && b.mask == 0 {  // both are known
+    if a.mask == 0 && b.mask == 0 {
+        // both are known
         Tnum::new(a.value * b.value, 0)
-    } else if a.mask == u64::MAX && b.mask == u64::MAX { //both are unknown
-        Tnum::new(0,u64::MAX)
-    } else if (a.value == 0 && a.mask == 0) || (b.value == 0 && b.mask == 0) { // mult by 0
+    } else if a.mask == u64::MAX && b.mask == u64::MAX {
+        //both are unknown
+        Tnum::new(0, u64::MAX)
+    } else if (a.value == 0 && a.mask == 0) || (b.value == 0 && b.mask == 0) {
+        // mult by 0
         Tnum::new(0, 0)
-    } else if a.value == 1 && a.mask == 0 { // mult by 1
+    } else if a.value == 1 && a.mask == 0 {
+        // mult by 1
         b
-    } else if b.value == 1 && b.mask == 0 { // mult by 1
+    } else if b.value == 1 && b.mask == 0 {
+        // mult by 1
         a
     } else {
-        let (a_up,a_low) = tnum_decompose(a);
-        let (b_up,b_low) = tnum_decompose(b);
+        let (a_up, a_low) = tnum_decompose(a);
+        let (b_up, b_low) = tnum_decompose(b);
         tnum_mul_rec(a_up, b_up)
         //tnum_mul_rec(a_up, b_up) + tnum_mul_rec(a_up, b_low) + tnum_mul_rec(a_low, b_up) + tnum_mul_rec(a_low, b_low)
         // TODO: this one is wrong, replace this line with the following impl
@@ -373,7 +363,6 @@ pub fn tnum_mul_rec(a: Tnum, b: Tnum) -> Tnum {
         (mul a_low b_up) + (mul a_low b_low)
         */
     }
-
 }
 
 /// tnum 的交集计算
@@ -399,7 +388,6 @@ pub fn tnum_is_aligned(a: Tnum, size: u64) -> bool {
     }
 }
 
-
 /// check if [b] is a subset of [a], that is
 /// 1) for unknown bits: all bit-set in [b.mask] must exist in [a.mask]
 /// 2) for known bits: all bit-set in [b.value] must exist in [a.value] or [a.mask]
@@ -423,11 +411,11 @@ pub fn tnum_in(a: Tnum, b: Tnum) -> bool {
 // }
 
 #[test]
-fn test_tnum_in () -> (){
+fn test_tnum_in() -> () {
     let a = Tnum::new(1, 0);
     let b = Tnum::new(0, 1);
     println!("{:?}", tnum_in(b, a)); // true
-    //println!("{:?}", xtnum_in(b, a)); // false
+                                     //println!("{:?}", xtnum_in(b, a)); // false
 }
 
 /// tnum转换为字符串

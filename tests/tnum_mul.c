@@ -125,16 +125,6 @@ int main(int argc, char *argv[]) {
         json_object_array_add(output_array, json_object_get(test_case));
     }
 
-    // printf("\n\n总体统计:\n");
-    // printf("函数\t\t\t\t\t平均时间(ns)\n");
-    // printf("----------------------------------------\n");
-    
-    // // 计算平均时间
-    // c_stats.avg_time_ns /= c_stats.total_count;
-
-    // printf("%s\t\t\t\t\t%.2f\n", 
-    //     c_stats.method, c_stats.avg_time_ns);
-
     // 将结果写入文件
     const char *output_json = json_object_to_json_string_ext(output_array, JSON_C_TO_STRING_PRETTY);
     FILE *out_fp = fopen(output_file, "w");
