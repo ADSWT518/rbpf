@@ -9,6 +9,8 @@ SBPF virtual machine + A better verifier
 
 To check the performance of mulpti-tnum-mul, just do
 ```shell
+$ sudo apt install libjson-c-dev #install json lib for C programs
+
 $ make test (N=100 ITERATION=1000)
 ...
 Total:

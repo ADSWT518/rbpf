@@ -1,3 +1,4 @@
 target
 .idea
-mul_test_results.json
+*.json
+tests/build/
