@@ -13,10 +13,18 @@ pub struct Tnum {
 impl Tnum {
     /// 创建实例
     pub fn new(value: u64, mask: u64) -> Self {
-        Self {
-            value,
-            mask,
-        }
+        Self { value, mask }
+    }
+
+    /// 创建 bottom 元素（表示"不可能的值"）
+    pub fn bottom() -> Self {
+        // 使用 value & mask != 0 的方式表示 bottom
+        Self::new(1, 1) // 任何 value & mask != 0 的组合都是 bottom
+    }
+
+    /// 创建 top 元素（表示"任何可能的值"）
+    pub fn top() -> Self {
+        Self::new(0, u64::MAX)
     }
 
     /// 获取 value 字段
@@ -27,6 +35,65 @@ impl Tnum {
     /// 获取 mask 字段
     pub fn mask(&self) -> u64 {
         self.mask
+    }
+
+    /// 判断是否为bottom（不可能的值）
+    pub fn is_bottom(&self) -> bool {
+        (self.value & self.mask) != 0
+    }
+
+    /// 判断是否为top（完全不确定的值）
+    pub fn is_top(&self) -> bool {
+        self.value == 0 && self.mask == u64::MAX
+    }
+
+    /// 判断是否为确定值（单点）
+    pub fn is_singleton(&self) -> bool {
+        self.mask == 0
+    }
+
+    /// 判断是否为非负数（最高位为0）
+    pub fn is_nonnegative(&self) -> bool {
+        (self.value & (1 << 63)) == 0 && (self.mask & (1 << 63)) == 0
+    }
+
+    /// 判断是否为负数（最高位为1）
+    pub fn is_negative(&self) -> bool {
+        (self.value & (1 << 63)) != 0 && (self.mask & (1 << 63)) == 0
+    }
+
+    /// 统计高位连续0的个数
+    pub fn countl_zero(&self) -> u32 {
+        self.value.leading_zeros()
+    }
+
+    /// 统计低位连续0的个数
+    pub fn countr_zero(&self) -> u32 {
+        self.value.trailing_zeros()
+    }
+
+    /// 统计最小的高位连续0的个数
+    pub fn count_min_leading_zeros(&self) -> u32 {
+        let max = self.value + self.mask;
+        max.leading_zeros()
+    }
+
+    /// 统计最小的低位连续0的个数
+    pub fn count_min_trailing_zeros(&self) -> u32 {
+        let max = self.value + self.mask;
+        max.trailing_zeros()
+    }
+
+    /// 清除高位
+    pub fn clear_high_bits(&mut self, n: u32) {
+        if n >= 64 {
+            self.value = 0;
+            self.mask = 0;
+        } else {
+            let mask = (1u64 << (64 - n)) - 1;
+            self.value &= mask;
+            self.mask &= mask;
+        }
     }
 }
 
@@ -466,4 +533,133 @@ pub fn tnum_with_subreg(reg: Tnum, subreg: Tnum) -> Tnum {
 
 pub fn tnum_const_subreg(a: Tnum, value: u32) -> Tnum {
     tnum_with_subreg(a, tnum_const(value as u64))
+}
+
+/// 有符号取余操作（SRem）
+pub fn tnum_srem(a: Tnum, b: Tnum) -> Tnum {
+    // 处理 bottom 和 top 情况
+    if a.is_bottom() || b.is_bottom() {
+        return Tnum::bottom();
+    } else if a.is_top() || b.is_top() {
+        return Tnum::top();
+    }
+
+    // 处理单点值情况
+    if a.is_singleton() && b.is_singleton() {
+        if b.value == 0 {
+            return Tnum::top(); // 除以0返回top
+        }
+        // 计算有符号取余
+        let a_val = a.value as i64;
+        let b_val = b.value as i64;
+        let result = a_val % b_val;
+        return Tnum::new(result as u64, 0);
+    }
+
+    // 处理除数为0的情况
+    if b.value == 0 {
+        return Tnum::top(); // top
+    }
+
+    // 处理除数是2的幂的情况
+    if b.mask == 0
+        && !((b.value >> 63) & 1 == 1)
+        && ((b.value.trailing_zeros() + b.value.leading_zeros() + 1) == 64)
+    {
+        let low_bits = b.value - 1;
+        let mut res_value = a.value & low_bits;
+        let mut res_mask = a.mask & low_bits;
+
+        // 如果被除数非负或低位0足够多
+        if a.is_nonnegative() || (b.value.trailing_zeros() <= a.count_min_trailing_zeros()) {
+            // 保持现有值
+        }
+        // 如果被除数为负且低位不全为0
+        else if a.is_negative() && ((a.value & low_bits) != 0) {
+            res_mask = low_bits & res_mask;
+            res_value = (!low_bits) | res_value;
+        }
+
+        return Tnum::new(res_value, res_mask);
+    }
+
+    // 一般情况：结果的精度有限
+    // 保留原操作数中的前导零
+    let mut result = Tnum::top(); // 先创建一个top
+    let leading_zeros = a.count_min_leading_zeros();
+    result.clear_high_bits(leading_zeros);
+
+    return result;
+}
+
+/// 无符号取余操作（URem）
+pub fn tnum_urem(a: Tnum, b: Tnum) -> Tnum {
+    // 处理 bottom 和 top 情况
+    if a.is_bottom() || b.is_bottom() {
+        return Tnum::bottom();
+    } else if a.is_top() || b.is_top() {
+        return Tnum::top();
+    }
+
+    // 处理除数为0的情况
+    if b.value == 0 {
+        return Tnum::top(); // 除以0返回top
+    }
+
+    // 处理低位
+    // 检查除数是否为 2 的幂
+    if b.mask == 0
+        && !((b.value >> 63) & 1 == 1)
+        && ((b.value.trailing_zeros() + b.value.leading_zeros() + 1) == 64)
+    {
+        // 除数是 2 的幂，直接用位掩码计算余数
+        let low_bits = b.value - 1; // 例如：8-1=7(0b111)，用于掩码
+        let res_value = low_bits & a.value;
+        let res_mask = low_bits & a.mask;
+        return Tnum::new(res_value, res_mask);
+    }
+
+    // 一般情况：结果的精度有限
+    // 由于结果小于或等于任一操作数，因此操作数中的前导零在结果中也存在
+    let leading_zeros = a.count_min_leading_zeros().max(b.count_min_leading_zeros());
+    let mut res = Tnum::top(); // 先创建一个top
+    res.clear_high_bits(leading_zeros);
+
+    return res;
+}
+
+/// 模运算（Mod），结果总是非负
+pub fn tnum_mod(a: Tnum, b: Tnum) -> Tnum {
+    // 处理特殊情况
+    if a.is_bottom() || b.is_bottom() {
+        return Tnum::bottom();
+    } else if a.is_top() || b.is_top() {
+        return Tnum::top();
+    }
+
+    // 处理除数为0的情况
+    if b.value == 0 {
+        return Tnum::top();
+    }
+
+    // 对于非负数，mod 等同于 urem
+    if a.is_nonnegative() {
+        return tnum_urem(a, b);
+    }
+
+    // 对于负数，计算 srem 然后处理负结果
+    let rem = tnum_srem(a, b);
+    
+    // 如果结果可能为负（并且除数非负），需要调整
+    if rem.is_negative() && b.is_nonnegative() {
+        // 如果除数是确定值，直接加上除数
+        if b.is_singleton() {
+            return tnum_add(rem, b);
+        } else {
+            // 结果范围：原来的结果和原来的结果加上除数
+            return tnum_join(rem, tnum_add(rem, b));
+        }
+    }
+    
+    return rem;
 }
