@@ -1,7 +1,11 @@
 //! Wrapped interval implementation for Solana eBPF
 //! Based on the paper "A Wrapped Interval Arithmetic" by Jorge A. Navas et al.
+//! 
+//! This module provides a complete implementation of wrapped interval arithmetic,
+//! including all arithmetic operations, join/meet, comparisons, and widening.
 
 use std::cmp::{max, min};
+use std::fmt;
 
 /// 表示一个带位宽的环绕区间 [lb, ub]
 #[derive(Debug, Clone)]
@@ -33,6 +37,20 @@ pub struct BaseRange {
     width: u32,
     /// 是否有符号
     is_signed: bool,
+}
+
+impl fmt::Display for WrappedRange {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        if self.is_bottom {
+            write!(f, "⊥")
+        } else if self.base.is_top {
+            write!(f, "⊤")
+        } else if self.is_constant() {
+            write!(f, "[{}]", self.base.lb)
+        } else {
+            write!(f, "[{}, {}]", self.base.lb, self.base.ub)
+        }
+    }
 }
 
 impl BaseRange {
@@ -126,8 +144,40 @@ impl WrappedRange {
         self.base.is_top
     }
 
+    /// 获取上界
+    pub fn get_ub(&self) -> u64 {
+        self.base.ub
+    }
+
+    /// 获取下界
+    pub fn get_lb(&self) -> u64 {
+        self.base.lb
+    }
+
+    /// 获取位宽
+    pub fn get_width(&self) -> u32 {
+        self.base.width
+    }
+
+    /// 获取是否有符号
+    pub fn is_signed(&self) -> bool {
+        self.base.is_signed
+    }
+
+    /// 设置上界
+    pub fn set_ub(&mut self, ub: u64) {
+        self.base.ub = ub;
+        self.normalize();
+    }
+
+    /// 设置下界
+    pub fn set_lb(&mut self, lb: u64) {
+        self.base.lb = lb;
+        self.normalize();
+    }
+
     /// 检查是否为常量区间 (对应 C++ 的 isConstant)
-    fn is_constant(&self) -> bool {
+    pub fn is_constant(&self) -> bool {
         if self.is_bottom() {
             return false;
         }
