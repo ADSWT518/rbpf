@@ -2,6 +2,16 @@
 
 SBPF virtual machine + A better verifier
 
+## 🚀 Latest Updates
+
+**最新测试项目已转移至**: [https://github.com/shenghaoyuan/rbpf/tree/tnum_test](https://github.com/shenghaoyuan/rbpf/tree/tnum_test)
+
+该分支包含了最新的 tnum 抽象域实现和 wrapped interval 域的完整 Rust 实现。主要更新包括：
+- 完整的 wrapped interval arithmetic 实现
+- 所有算术运算、join/meet 操作
+- 全面的测试套件和演示程序
+- 基于论文 "A Wrapped Interval Arithmetic" 的忠实实现
+
 ## Our Verifier
 
 - tnum abstract domain (see `src/tnum.rs`)
