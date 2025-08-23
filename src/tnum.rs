@@ -1,5 +1,5 @@
 //! This is a tnum implementation for Solana eBPF
-
+use fastdivide::DividerU64;
 use std::u64;
 
 fn testbit(val: u64, bit: u8) -> bool {
@@ -41,6 +41,66 @@ impl BitOps for u64 {
 pub struct Tnum {
     pub value: u64,
     pub mask: u64,
+}
+
+pub struct TnumU128 {
+    pub value: u128,
+    pub mask: u128,
+}
+
+impl TnumU128 {
+    /// 创建实例
+    pub fn new(value: u128, mask: u128) -> Self {
+        Self { value, mask }
+    }
+    /// tnum 的加法操作
+    pub fn add(&self, other: Self) -> Self {
+        // 计算掩码之和 - 表示两个不确定数的掩码组合
+        let sm = self.mask.wrapping_add(other.mask);
+
+        // 计算确定值之和
+        let sv = self.value.wrapping_add(other.value);
+
+        // sigma = (a.mask + b.mask) + (a.value + b.value)
+        // 用于检测进位传播情况
+        let sigma = sm.wrapping_add(sv);
+
+        // chi = 进位传播位图
+        // 通过异或操作找出哪些位发生了进位
+        let chi = sigma ^ sv;
+
+        // mu = 最终的不确定位掩码
+        // 包括:
+        // 1. 进位产生的不确定性 (chi)
+        // 2. 原始输入的不确定位 (a.mask | b.mask)
+        let mu = chi | self.mask | other.mask;
+
+        // 返回结果:
+        // value: 确定值之和，但排除所有不确定位 (~mu)
+        // mask: 所有不确定位的掩码
+        Self::new(sv & !mu, mu)
+    }
+
+    /// tnum 的乘法操作
+    pub fn mul(&self, other: Self) -> Self {
+        let mut a = Self::new(self.value, self.mask);
+        let mut b = Self::new(other.value, other.mask);
+        let acc_v = a.value.wrapping_mul(b.value);
+        let mut acc_m: Self = Self::new(0, 0);
+        while (a.value != 0) || (a.mask != 0) {
+            // println!("acc_m.mask:{:?}, acc_m.value:{:?}", acc_m.mask, acc_m.value);
+            if (a.value & 1) != 0 {
+                acc_m = acc_m.add(Self::new(0, b.mask));
+            } else if (a.mask & 1) != 0 {
+                acc_m = acc_m.add(Self::new(0, b.value | b.mask));
+            }
+            a.value = a.value.wrapping_shr(1);
+            a.mask = a.mask.wrapping_shr(1);
+            b.value = b.value.wrapping_shl(1);
+            b.mask = b.mask.wrapping_shl(1);
+        }
+        Self::new(acc_v, 0).add(acc_m)
+    }
 }
 
 impl Tnum {
@@ -804,6 +864,52 @@ impl Tnum {
             }
         }
         result
+    }
+
+    /// fast_divide
+    pub fn fast_divide(&self, other: Self) -> Self {
+        if other.mask == 0 && other.value == 0 {
+            return Tnum::top();
+        } else if other.mask == 0 && other.value == 1 {
+            return *self;
+        } else if other.mask == 0 {
+            let divider = DividerU64::divide_by(other.value);
+            match divider {
+                DividerU64::Fast { magic, shift } => {
+                    let self_u128 = TnumU128::new(self.value as u128,self.mask as u128);
+                    let other_u128 = TnumU128::new(magic as u128,0);
+                    let temp = self_u128.mul(other_u128);
+                    let res = Self::new((temp.value >> 64) as u64, (temp.mask >> 64) as u64);
+                    return res.tnum_rshift(shift as u8);
+                    // println!("  - Strategy: Fast Path");
+                    // println!("  - Magic (M): 0x{:X} ({})", magic, magic);
+                    // println!("  - Shift (s): {}", shift);
+                    // println!("  - Formula: ((n * M)_high) >> s");
+                }
+                DividerU64::BitShift(shift) => {
+                    return self.tnum_rshift(shift as u8);
+                    // println!("  - Strategy: BitShift (Power of 2)");
+                    // println!("  - No Magic number (M) needed.");
+                    // println!("  - Shift (s): {}", shift);
+                    // println!("  - Formula: n >> s");
+                }
+                DividerU64::General { magic_low, shift } => {
+                    let self_u128 = TnumU128::new(self.value as u128,self.mask as u128);
+                    let other_u128 = TnumU128::new(magic_low as u128,0);
+                    let temp = self_u128.mul(other_u128);
+                    let q = Self::new((temp.value >> 64) as u64, (temp.mask >> 64) as u64);
+                    let mut res = self.sub(q).tnum_rshift(1).add(q);
+                    res = res.tnum_rshift(shift as u8);
+                    return res;
+                    // println!("  - Strategy: General Path");
+                    // println!("  - Magic_low: 0x{:X} ({})", magic_low, magic_low);
+                    // println!("  - The effective Magic number is (2^64 + Magic_low)");
+                    // println!("  - Shift (s): {}", shift);
+                    // println!("  - Formula: A more complex calculation (see source)");
+                }
+            }
+        }
+        self.sdiv(other)
     }
 
     /// 有符号除法操作
